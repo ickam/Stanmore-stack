@@ -1,0 +1,27 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+
+  stanmore2:
+    build: ./marshall-stanmore-2        # builds from the cloned repo
+    container_name: stanmore2
+    network_mode: host                  # needed for BlueZ/DBus BLE
+    privileged: true                    # simplest way to grant BLE access
+    restart: unless-stopped
+    volumes:
+      - /var/run/dbus:/var/run/dbus     # talk to BlueZ on the host
+    environment:
+      # --- MQTT (points to the Mosquitto in this same compose stack) ---
+      MQTT_HOSTNAME: "192.168.86.217"
+      MQTT_PORT: "1883"
+      MQTT_TOPIC_PREFIX: "stanmore2"
+
+      # --- Your speaker's BLE MAC (from `bluetoothctl` -> `scan on`) ---
+      BLE_ADDRESS: "54:B7:E5:92:1C:3E"
