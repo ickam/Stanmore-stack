@@ -1,0 +1,19 @@
+[project]
+name = "marshallstanmore2"
+version = "0.1.0"
+description = "MQTT/BLE control for a Marshall Stanmore 2 speaker"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "bleak>=0.22.3,<1",
+    "ragdoll>=0.4.0,<1",
+]
+
+[project.optional-dependencies]
+mqtt = [
+    "aiomqtt>=2.3.2,<3",
+]
+doc = [
+   "sphinx>=8.2.3",
+   "sphinx-autodoc-typehints>=3.1.0",
+]

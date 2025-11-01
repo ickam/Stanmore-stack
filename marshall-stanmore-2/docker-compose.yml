@@ -1,0 +1,7 @@
+services:
+  nanomq:
+    image: emqx/nanomq:latest
+    environment:
+      NANOMQ_BROKER_URL: nmq-tcp://0.0.0.0:1883
+    ports:
+      - 1883:1883

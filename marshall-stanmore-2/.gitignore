@@ -1,0 +1,8 @@
+./.venv
+.DS_Store
+.idea/
+__pycache__/
+*.pyc
+*.pyi
+docs/_build/
+build_to_rpi.sh
