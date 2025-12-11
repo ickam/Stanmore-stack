@@ -78,10 +78,10 @@ class MarshallStanmore2:
         self._equalizer_callbacks = OrderedDict()
 
         self._media_info_buffer = BytesIO()
- @property                                                                                                                                                                       │
-    def is_connected(self) -> bool:                                                                                                                                                 │
-    return self.client.is_connected                                                                                                                                             │
-  
+
+    @property
+    def is_connected(self) -> bool:
+        return self.client.is_connected
 
     async def __aenter__(self):
         logger.info("Connecting ...")
