@@ -127,8 +127,8 @@ class MqttControl:
         return f"{self._topic_prefix}/{topic_name}"
 
     async def wakeup(self):
-         if not self._speaker.is_connected:
-        await self._stack.enter_async_context(self._speaker)
+        if not self._speaker.is_connected:
+            await self._stack.enter_async_context(self._speaker)
         await self.get_status()
 
     async def start(self):
